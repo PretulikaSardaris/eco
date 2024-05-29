@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { IoCartOutline } from "react-icons/io5";
 
+
 const Navbar = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const Navbar = () => {
       <Link to='/'>ProductPage</Link>
       <Link to='/cart'><IoCartOutline size={25}/>
       </Link>
+      <>({})</>
       </div>
       <h3 className='float-end'>ShoppingWindow.com</h3>
     </div>
