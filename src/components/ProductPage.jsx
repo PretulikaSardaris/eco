@@ -4,24 +4,12 @@ import { ShopContext } from '../context/ShopContext'
 
 const ProductPage = () => {
 
-   const[products, setProducts] = useState([])
-   const {cart , addToCart } = useContext(ShopContext)
-
-   const fetchProducts = async() => {
-
-    const res = await fetch('https://dummyjson.com/products')
-    const data = await res.json()
-
-    if(data && data.products){
-        setProducts(data.products)
-    }
-
-   }
    
-   useEffect(() => {
-    fetchProducts()
-   } , [])
+   const {products , cart , addToCart } = useContext(ShopContext)
 
+   const getItemQuantity = (itemId) => {
+    return cart[itemId] ? cart[itemId].quantity : 0 ;
+   }
 
   return (
     <div className="container mx-auto p-4">
@@ -36,7 +24,7 @@ const ProductPage = () => {
                             <button
                             onClick={() => addToCart(item)}
                             className="bg-slate-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">
-                        Add to Cart({cart.length})
+                        Add to Cart  ({getItemQuantity(item.id)})
                      </button> </div>
                 ))} </div> 
         )}
