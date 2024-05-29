@@ -4,7 +4,10 @@
 
 ## Overview
 
-This project is an e-commerce website built from scratch to practice various React concepts, including fetching data, using `useEffect`, and managing global state with the Context API. The project also includes a basic shopping cart feature. Future enhancements will include authentication services using Firebase.
+This project is an e-commerce website built from scratch to practice various React concepts, including `fetch` data, using `useEffect`, and managing global state with the `createContext`. The project also includes a basic shopping cart feature. Future enhancements will include authentication services using Firebase.
+
+##Site Link : -
+https://shoppingwindow.netlify.app/
 
 ## Features
 
