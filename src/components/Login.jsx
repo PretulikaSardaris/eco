@@ -3,9 +3,12 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import {auth, db} from  '../Library/firebase'
 import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+
+  const navigate = useNavigate();
     const handleLogin = async (e) => {
         e.preventDefault();
        
@@ -15,6 +18,7 @@ const Login = () => {
             await signInWithEmailAndPassword(auth , email , password)
            
             toast.success('Logging in')
+            navigate('/cart')
         }catch(err){
             console.log(err)
             toast.error(err.message)

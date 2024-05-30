@@ -66,3 +66,16 @@ export const ShopContextProvider = ({children}) => {
 // export default {ShopContext, ShopContextProvider}
 
 
+// import { createContext } from "react";
+// import { Faker } from "@faker-js/faker";
+
+// export const ShopContext = createContext()
+
+// export const ShopContextProvider = ( {children}) => {
+//  const products = [...Array(20)].map(() => ( {
+
+//  }))
+
+//   return <ShopContext.Provider>{children}</ShopContext.Provider>
+
+// }
