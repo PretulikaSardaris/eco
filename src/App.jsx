@@ -9,6 +9,8 @@ import {
   Link
 } from "react-router-dom";
 import { ShopContextProvider } from './context/ShopContext';
+import Login from './components/Login';
+import Notification from './components/Notification';
 
 function App() {
   
@@ -21,8 +23,11 @@ function App() {
       <Routes >
       <Route path='/' element = {<ProductPage />} />
       <Route path='/cart' element = {<CartPage />} />
+      <Route path='/Login' element = {<Login />} />
+
       </Routes>
       </Router>
+      <Notification />
       </ShopContextProvider>
     </>
   )

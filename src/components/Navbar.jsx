@@ -11,7 +11,8 @@ const Navbar = () => {
       <Link to='/'>ProductPage</Link>
       <Link to='/cart'><IoCartOutline size={25}/>
       </Link>
-      <>({})</>
+      <Link to='/Login'>Login/Register </Link>
+      
       </div>
       <h3 className='float-end'>ShoppingWindow.com</h3>
     </div>
