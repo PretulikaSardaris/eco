@@ -1,5 +1,5 @@
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import {auth, db} from  '../Library/firebase'
 import { doc, setDoc } from 'firebase/firestore';
@@ -9,8 +9,13 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
 
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false)
+  const [register, setRegister] = useState(false)
+
     const handleLogin = async (e) => {
         e.preventDefault();
+        setLoading(true)
        
         const formData = new FormData(e.target)
         const {email , password } = Object.fromEntries(formData)
@@ -22,12 +27,15 @@ const Login = () => {
         }catch(err){
             console.log(err)
             toast.error(err.message)
+        } finally{
+          setLoading(false)
         }
       };
 
 
     const handleRegister = async (e) => {
         e.preventDefault();
+        setRegister(true)
        
         const formData = new FormData(e.target)
         const {username , email , password } = Object.fromEntries(formData)
@@ -47,7 +55,10 @@ toast.success('Account created login now')
             console.log(err)
             toast.error(err.message)
         }
-        toast.success('signup now you can login')
+        finally{
+        setRegister(false)
+
+        }
       };
 
   return (
@@ -77,8 +88,9 @@ toast.success('Account created login now')
             <button
               className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-25"
               type="submit"  
+              disabled={loading}
             >
-              Sign In
+              {loading ? 'loading ..' : 'Sign In'}
             </button>
           </form>
         </div>
@@ -113,8 +125,9 @@ toast.success('Account created login now')
             <button
               className="bg-purple-600 hover:bg-purple-500 w-25 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
+              disabled={register}
             >
-              Sign Up
+               {register ? 'loading ..' : 'Sign Up'}
             </button>
           </form>
         </div>
