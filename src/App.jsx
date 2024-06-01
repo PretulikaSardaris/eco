@@ -11,6 +11,7 @@ import {
 import { ShopContextProvider } from './context/ShopContext';
 import Login from './components/Login';
 import Notification from './components/Notification';
+import HomePage from './components/HomePage';
 
 
 function App() {
@@ -20,9 +21,11 @@ function App() {
     <>
     <ShopContextProvider >
     <Router>
-      <Navbar />
+    <Navbar />
+    
       <Routes >
-      <Route path='/' element = {<ProductPage />} />
+      <Route path='/' element = {<HomePage />} />
+      <Route path='/ProductPage' element = {<ProductPage />} />
       <Route path='/cart' element = {<CartPage />} />
       <Route path='/Login' element = {<Login />} />
 
