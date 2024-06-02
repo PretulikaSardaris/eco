@@ -24,7 +24,7 @@ const Navbar = () => {
       <select name="" id="">
         <option value="All">All</option>
       </select>
-      <input type="text" className=' border-none text-black p-3 w-1/3 flex-1' placeholder='search'/>
+      <input type="text" className=' border-none text-black p-3 w-1/3 flex-1' placeholder='This website is under construction please use diversion!'/>
       <FaSearch size={20} className='flex  item-center mt-3 mr-3' /></div>
 
 

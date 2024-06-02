@@ -26,7 +26,7 @@ const ProductPage = () => {
             {categories.map(category => (
               <li key={category} className='mt-2'>
                 <button onClick={() => setSelectedCategory(category)}
-                className={`block w-full text-left px-4 py-2 rounded-md ${selectedCategory === category ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}>{category}</button>
+                className={`block w-full text-left px-4 py-2 rounded-md ${selectedCategory === category ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-pink-700'}`}>{category}</button>
               </li>
             ))}
           </ul>
