@@ -4,6 +4,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { FaCartArrowDown } from "react-icons/fa";
 import { MdOutlineContactSupport } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -12,23 +13,30 @@ const Navbar = () => {
     alert('clicked')
   }
   return (
-     <nav className='flex justify-between items-center bg-[#FFF9D0]'>
-      <Link to='/' href="#" className='flex items-center gap-5 ml-10'>
+     <nav className='flex justify-between items-center bg-[#FFFFFF] '>
+      <Link to='/' href="#" className='flex items-center gap-5 ml-10 hover:border-2 border-indigo-200'>
         
         <img className='w-12' src="https://banner2.cleanpng.com/20180519/jjs/kisspng-e-commerce-logo-electronic-business-5b00d2d0918d84.2335269315267806245962.jpg" alt="" />
         <span className='font-bold text-lg text-blue-700'>e-commerce</span>
         
       </Link>
-      <div className='flex-grow flex justify-center'> <input type="text" className=' rounded-3xl text-black p-3 w-1/2' placeholder='search'/></div>
-      <div id='nav-menu' className='hidden md:flex p-2 gap-5 mr-10'>
+      <div className='flex-grow flex justify-around hover:border-2 border-indigo-200 rounded-3xl ml-2'> 
+      <select name="" id="">
+        <option value="All">All</option>
+      </select>
+      <input type="text" className=' border-none text-black p-3 w-1/3 flex-1' placeholder='search'/>
+      <FaSearch size={20} className='flex  item-center mt-3 mr-3' /></div>
+
+
+      <div id='nav-menu' className='hidden md:flex p-2 gap-5 mr-10 '>
        
-        <Link to="/Login">
+        <Link to="/Login" className='hover:border-2 border-indigo-200'>
         <FaRegUserCircle size={30} hover:color='#5AB2FF'/>Login</Link>
-        <Link to="/CartPage">
+        <Link className='hover:border-2 border-indigo-200' to="/CartPage">
         <FaCartArrowDown size={30} hover:color='#5AB2FF' />Cart</Link>
         
-<Link to='/'>
-        <MdOutlineContactSupport size={30} hover:color='#5AB2FF'/>Support
+<Link to='/' className='hover:border-2 border-indigo-200'>
+        <MdOutlineContactSupport size={30} hover:color='#5AB2FF '/>Support
         </Link>
 
        </div>

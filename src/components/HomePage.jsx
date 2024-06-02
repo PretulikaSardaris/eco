@@ -1,94 +1,86 @@
-import { Carousel, Typography, Button, Navbar } from "@material-tailwind/react";
- 
+import { Carousel , Typography , Button , Navbar } from "@material-tailwind/react";
+import ProductCards from "./ProductCards";
+import { useEffect, useState } from "react";
+
+
+const images = [
+  {
+    src:'https://www.politix.com.au/on/demandware.static/-/Library-Sites-PolitixSharedLibrary/default/dw6244cdf2/images/Blog/2021/10%20-%20Oct/Suit%20Colours%20%7C%20Find%20your%20colours/PLTX65_MA_Oct%20Blog%20Images_WK16_Tailoring_Landing%20Page%20FA.jpg',
+    alt: 'image!' , 
+    text: 'Clothing with Attitude',
+    color: 'blue' , 
+  },
+  {
+    src:'https://img.freepik.com/free-photo/happy-girl-with-blonde-hair-red-glasses-white-dress-holding-cool-handbag-pointing-place-text-pink-background_197531-28913.jpg',
+    alt: 'image!' , 
+    text: 'Always Be Different'
+  },
+  {
+    src:'https://img.freepik.com/premium-photo/pink-headphone-black-cable-pastel-color-blue-pink-background-music-concept_24076-324.jpg',
+    alt: 'image!' , 
+    text: 'Power On'
+  },
+  {
+    src:'https://png.pngtree.com/thumb_back/fw800/background/20220707/pngtree-fresh-yellow-fruits-and-vegetables-collection-on-a-blue-background-photo-image_37185890.jpg',
+    alt: 'image!' , 
+    text: 'A store for Health'
+  },
+]
+
+
 export default function HomePage() {
-  return (
-    <div className="relative">
-    <Carousel className="rounded-xl">
-      <div className="relative h-full w-full">
-        <img
-          src="https://wallpapers.com/images/hd/blue-aesthetic-mens-fashion-bncfzboi26coh5qq.jpg"
-          alt="image 1"
-          className="h-full w-full"
-        />
-        <div className="absolute inset-0 grid h-full w-full place-items-center">
-          <div className="w-3/4 text-center md:w-2/4">
-            <Typography
-              variant="h1"
-              color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl"
-            >
-              The Beauty of Nature
-            </Typography>
-            
-            <div className="flex justify-center gap-2">
-              <Button size="lg" color="white">
-                Explore
-              </Button>
-              <Button size="lg" color="white" variant="text">
-                Gallery
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="relative h-full w-full">
-        <img
-          src="https://img.freepik.com/free-photo/happy-girl-with-blonde-hair-red-glasses-white-dress-holding-cool-handbag-pointing-place-text-pink-background_197531-28913.jpg"
-          alt="image 2"
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 grid h-full w-full items-center ">
-          <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
-            <Typography
-              variant="h1"
-              color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl"
-            >
-              The Beauty of Nature
-            </Typography>
-            
-            <div className="flex gap-2">
-              <Button size="lg" color="white">
-                Explore
-              </Button>
-              <Button size="lg" color="white" variant="text">
-                Gallery
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="relative h-full w-full">
-        <img
-          src="https://img.freepik.com/premium-photo/integrated-hands-free-calling-systems-solid-color-background_964851-134496.jpg"
-          alt="image 3"
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 grid h-full w-full items-end">
-          <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32">
-            <Typography
-              variant="h1"
-              color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl"
-            >
-              The Beauty of Nature
-            </Typography>
+  const[currentIndex , setCurrentIndex] = useState(0);
+
+
+useEffect(()=> {
+const interval = setInterval(() => {
+  setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+} , 2000);
+
+return () => clearInterval(interval)
+} , [])
+
+
+return (
+<div>
+<div className="bg-blue-100 w-full m-0 flex flex-col md:flex-row">
+  
+ 
+  <div className="bg-blue-200 w-full m-0">
+  <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="relative object-cover w-full h-66 md:h-[500px] lg:h-[600px]" />
+  </div>
+  <div className="flex bg-blue-100 w-1/2  flex-col justify-center items-center gap-7 ml-20">
+    <h1 className="text-xl md:text-2xl font-serif font-semibold">OneStop Solution</h1>
+    <p className="text-3xl md:text-5xl font-italic">{images[currentIndex].text}</p>
+    <button className="font-spirax text-5xl md:text-6xl font-extralight">Check Exciting Deals!</button>
+  </div>
+</div>
+
+
+
+</div>
+
+
+
+
+  // <div id="mainDiv" className="border-4 border-black ">
+   
+  //   <div id="heroDiv" className=" flex flex-col lg:flex-row m-5 p-5">
+  //   <div className="hidden lg:flex flex-row justify-between items-center bg-opacity-10 ">
+  //         <h1 className="font-dancing text-5xl text-center xl:text-7xl font-bold text-gray-800">{images[currentIndex].text}</h1>
+       
+  //         <h2 className="font-dancing font-bold text-3xl  text-gray-900 py-4 px-8 rounded-md mt-4">Order Now!</h2>
+  //       </div>
+  //     <div id="imageDiv" className="w-screen h-screen ">
+  //       <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="relative object-cover w-fit h-66 md:h-[500px] lg:h-[500px]" />
+        
+  //     </div>
+     
       
-            <div className="flex gap-2">
-              <Button size="lg" color="white">
-                Explore
-              </Button>
-              <Button size="lg" color="white" variant="text">
-                Gallery
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Carousel>
-    <div>
-      
-    </div>
-    </div>
-  );
+  //     </div>
+  //     <div className="relative z-10">
+  //     <ProductCards />
+  //   </div>
+  // </div>
+)
 }
