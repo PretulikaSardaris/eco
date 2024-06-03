@@ -16,6 +16,7 @@ export const ShopContextProvider = ({children}) => {
         
         if(data && data.products){
           setProducts(data.products)
+          console.log(setProducts)
         }
        
       };

@@ -1,6 +1,8 @@
 import { Carousel , Typography , Button , Navbar } from "@material-tailwind/react";
 import ProductCards from "./ProductCards";
-import { useEffect, useState } from "react";
+import { useContext ,useEffect, useState } from "react";
+import { ShopContext } from '../context/ShopContext'
+
 
 
 const images = [
@@ -29,8 +31,9 @@ const images = [
 
 
 export default function HomePage() {
+  const { products, cart, addToCart } = useContext(ShopContext)
   const[currentIndex , setCurrentIndex] = useState(0);
-
+  console.log(products)
 
 useEffect(()=> {
 const interval = setInterval(() => {

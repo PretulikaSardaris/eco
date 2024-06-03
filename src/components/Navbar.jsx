@@ -20,15 +20,9 @@ const Navbar = () => {
         <span className='font-bold text-lg text-blue-700'>e-commerce</span>
         
       </Link>
-      <div className='flex-grow flex justify-around hover:border-2 border-indigo-200 rounded-3xl ml-2'> 
-      <select name="" id="">
-        <option value="All">All</option>
-      </select>
-      <input type="text" className=' border-none text-black p-3 w-1/3 flex-1' placeholder='This website is under construction please use diversion!'/>
-      <FaSearch size={20} className='flex  item-center mt-3 mr-3' /></div>
+      
 
-
-      <div id='nav-menu' className='hidden md:flex p-2 gap-5 mr-10 '>
+      <div id='nav-menu' className='flex p-2 gap-5 mr-10 '>
        
         <Link to="/Login" className='hover:border-2 border-indigo-200'>
         <FaRegUserCircle size={30} hover:color='#5AB2FF'/>Login</Link>
