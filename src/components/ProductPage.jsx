@@ -21,12 +21,12 @@ const ProductPage = () => {
     <div className="container mx-auto p-4 flex">
       <div className='w-1/4 pr-4'>
         <div className="mb-4">
-          <h2>Filter by Category</h2>
+          <h2 className='font-bold'>Categories</h2>
           <ul >
             {categories.map(category => (
               <li key={category} className='mt-2'>
                 <button onClick={() => setSelectedCategory(category)}
-                className={`block w-full text-left px-4 py-2 rounded-md ${selectedCategory === category ? 'bg-blue-100 text-black' : 'bg-gray-200 text-gray-900 hover:bg-pink-100'}`}>{category}</button>
+                className={`block w-full  text-left text-md px-1 py-2 rounded ${selectedCategory === category ? 'bg-blue-100 text-black' : 'bg-gray-200 text-gray-900 hover:bg-pink-100'}`}>{category}</button>
               </li>
             ))}
           </ul>

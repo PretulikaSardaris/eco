@@ -5,6 +5,7 @@ import { IoMenu } from "react-icons/io5";
 import { FaCartArrowDown } from "react-icons/fa";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
 
 const Navbar = () => {
@@ -16,10 +17,10 @@ const Navbar = () => {
     
   }
   return (
-     <nav className='flex justify-between items-center bg-[#FFFFFF] '>
-      <Link to='/' href="#" className='flex items-center gap-5 ml-10 hover:border-2 border-indigo-200'>
+     <nav className='flex justify-between items-center bg-[#FFFFFF] p-1 md:p-2 fixed top-0 left-0 w-full h-15 z-30 '>
+      <Link to='/' href="#" className='flex items-center gap-5 ml-5  hover:border-2 border-indigo-200'>
         
-        <img className='w-12' src="https://banner2.cleanpng.com/20180519/jjs/kisspng-e-commerce-logo-electronic-business-5b00d2d0918d84.2335269315267806245962.jpg" alt="" />
+        <img className='w-12 ml-0' src="https://banner2.cleanpng.com/20180519/jjs/kisspng-e-commerce-logo-electronic-business-5b00d2d0918d84.2335269315267806245962.jpg" alt="" />
         <span className='block font-bold text-lg text-blue-700'>e-commerce</span>
         
       </Link>
@@ -38,20 +39,20 @@ const Navbar = () => {
 
        </div>
        <div className='md:hidden cursor-pointer z-20'>
-       <button className='p-1 md:hidden z-40' onClick={handleCLick}>
-       <IoMenu size={25} />
+       <button className='p-1 mr-4 md:hidden z-40' onClick={handleCLick}>
+        {menu ? <ImCross /> : <IoMenu size={25} />}
        </button>
         
         </div>
-        <div className={`absolute top-0 right-5 w-1/2 z-10 bg-pink-50 p-10 rounded-b-3xl text-center transform ${menu ? 'block' : 'hidden'} md:hidden`}>
+        <div className={`absolute top-0 right-10 w-1/ z-10 bg-pink-50 opacity-75 p-5 rounded-b-xl text-center transform ${menu ? 'block' : 'hidden'} md:hidden`}>
        
        <Link to="/Login" className='hover:text-gray-700 border-indigo-200 text-xl'>
-       <FaRegUserCircle size={20} hover:color='#5AB2FF '/>Login</Link>
-       <Link className=' border-indigo-200 hover:text-gray-700' to="/CartPage">
-       <FaCartArrowDown size={20} hover:color='#5AB2FF' />Cart</Link>
+       <FaRegUserCircle size={25} hover:color='#5AB2FF '/>Login</Link>
+       <Link className=' border-indigo-200  text-xl hover:text-gray-700' to="/CartPage">
+       <FaCartArrowDown size={25} hover:color='#5AB2FF' />Cart</Link>
        
-<Link to='/' className=' border-indigo-200 hover:text-gray-700'>
-       <MdOutlineContactSupport size={20} hover:color='#5AB2FF '/>Support
+<Link to='/' className=' border-indigo-200 text-xl hover:text-gray-700'>
+       <MdOutlineContactSupport size={25} hover:color='#5AB2FF '/>Support
        </Link>
 
       </div>

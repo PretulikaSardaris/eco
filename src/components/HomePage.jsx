@@ -41,7 +41,7 @@ export default function HomePage() {
 useEffect(()=> {
 const interval = setInterval(() => {
   setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
-} , 30000);
+} , 4000);
 
 return () => clearInterval(interval)
 } , [])
@@ -49,15 +49,15 @@ return () => clearInterval(interval)
 
 return (
 <div>
-<div className="bg-blue-50 w-full m-0 flex flex-col md:flex-row">
+<div className="bg-blue-50 w-full mt-10 flex flex-col md:flex-row">
   
  
   <div className="bg-blue-50 w-full m-0">
-  <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="relative object-cover w-full h-66 md:h-[500px] lg:h-[750px]" />
+  <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="relative object-cover w-full h-70 mt-11 md:h-[500px] lg:h-[750px]" />
   </div>
   <div className="flex bg-blue-50 w-1/2  flex-col justify-center items-center gap-7 ml-20">
     
-    <p className=" font-spirax text-3xl md:text-5xl font-italic">{images[currentIndex].text}</p>
+    <p className="text-3xl md:text-5xl font-italic">{images[currentIndex].text}</p>
 
     {/* route  */}
 
