@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
@@ -9,20 +9,23 @@ import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
 
+  const[menu , setMenu] = useState(false)
+
   const handleCLick = () => {
-    alert('clicked')
+    setMenu(!menu)
+    
   }
   return (
      <nav className='flex justify-between items-center bg-[#FFFFFF] '>
       <Link to='/' href="#" className='flex items-center gap-5 ml-10 hover:border-2 border-indigo-200'>
         
         <img className='w-12' src="https://banner2.cleanpng.com/20180519/jjs/kisspng-e-commerce-logo-electronic-business-5b00d2d0918d84.2335269315267806245962.jpg" alt="" />
-        <span className='font-bold text-lg text-blue-700'>e-commerce</span>
+        <span className='block font-bold text-lg text-blue-700'>e-commerce</span>
         
       </Link>
       
 
-      <div id='nav-menu' className='flex p-2 gap-5 mr-10 '>
+      <div id='nav-menu' className='hidden md:flex p-2 gap-5 mr-10 '>
        
         <Link to="/Login" className='hover:border-2 border-indigo-200'>
         <FaRegUserCircle size={30} hover:color='#5AB2FF'/>Login</Link>
@@ -34,10 +37,25 @@ const Navbar = () => {
         </Link>
 
        </div>
-
-       <button className='p-1 md:hidden' onClick={handleCLick}>
-       <IoMenu />
+       <div className='md:hidden cursor-pointer z-20'>
+       <button className='p-1 md:hidden z-40' onClick={handleCLick}>
+       <IoMenu size={25} />
        </button>
+        
+        </div>
+        <div className={`absolute top-0 right-5 w-1/2 z-10 bg-pink-50 p-10 rounded-b-3xl text-center transform ${menu ? 'block' : 'hidden'} md:hidden`}>
+       
+       <Link to="/Login" className='hover:text-gray-700 border-indigo-200 text-xl'>
+       <FaRegUserCircle size={20} hover:color='#5AB2FF '/>Login</Link>
+       <Link className=' border-indigo-200 hover:text-gray-700' to="/CartPage">
+       <FaCartArrowDown size={20} hover:color='#5AB2FF' />Cart</Link>
+       
+<Link to='/' className=' border-indigo-200 hover:text-gray-700'>
+       <MdOutlineContactSupport size={20} hover:color='#5AB2FF '/>Support
+       </Link>
+
+      </div>
+       
        
      </nav>
 
