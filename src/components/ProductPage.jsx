@@ -26,7 +26,7 @@ const ProductPage = () => {
             {categories.map(category => (
               <li key={category} className='mt-2'>
                 <button onClick={() => setSelectedCategory(category)}
-                className={`block w-full text-left px-4 py-2 rounded-md ${selectedCategory === category ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-pink-700'}`}>{category}</button>
+                className={`block w-full text-left px-4 py-2 rounded-md ${selectedCategory === category ? 'bg-blue-100 text-black' : 'bg-gray-200 text-gray-900 hover:bg-pink-100'}`}>{category}</button>
               </li>
             ))}
           </ul>
@@ -41,10 +41,10 @@ const ProductPage = () => {
             <div key={item.id} className="bg-white p-4 rounded-lg shadow-lg">
               <img src={item.thumbnail} className="w-full h-48 object-cover rounded-md mb-4" />
               <h2 className="text-lg font-bold mb-2">{item.title}</h2>
-              <p className="text-gray-700 mb-4">{item.description}</p>
+             
               <button
                 onClick={() => addToCart(item)}
-                className="w-full bg-slate-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+                className="w-full bg-pink-100 text-black  font-semiboldpy-2 px-4 rounded-md hover:bg-blue-100"
               >
                 Add to Cart ({getItemQuantity(item.id)})
               </button>

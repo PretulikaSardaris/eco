@@ -3,7 +3,7 @@ import ProductCards from "./ProductCards";
 import { useContext ,useEffect, useState } from "react";
 import { ShopContext } from '../context/ShopContext'
 
-
+import { Route , Link  } from "react-router-dom";
 
 const images = [
   {
@@ -30,15 +30,18 @@ const images = [
 ]
 
 
+
 export default function HomePage() {
   const { products, cart, addToCart } = useContext(ShopContext)
+
   const[currentIndex , setCurrentIndex] = useState(0);
-  console.log(products)
+
+  
 
 useEffect(()=> {
 const interval = setInterval(() => {
   setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
-} , 3000);
+} , 30000);
 
 return () => clearInterval(interval)
 } , [])
@@ -55,7 +58,12 @@ return (
   <div className="flex bg-blue-50 w-1/2  flex-col justify-center items-center gap-7 ml-20">
     
     <p className=" font-spirax text-3xl md:text-5xl font-italic">{images[currentIndex].text}</p>
+
+    {/* route  */}
+
+    <Link to='ProductPage'>
     <button className="text-3xl md:text-6xl font-extralight">Check Exciting Deals!</button>
+    </Link>
   </div>
  
 </div>
