@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 
 const ProductPage = () => {
-  const { products, cart, addToCart } = useContext(ShopContext)
+  const { products, cart, addToCart , removeFromCart } = useContext(ShopContext)
   const [selectedCategory, setSelectedCategory] = useState('all')
 
   const getItemQuantity = (itemId) => {
@@ -36,18 +36,18 @@ const ProductPage = () => {
       </div>
 <div className='w-3/4'>
       {filteredProducts.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((item) => (
             <div key={item.id} className="bg-white p-4 rounded-lg shadow-lg">
               <img src={item.thumbnail} className="w-full h-48 object-cover rounded-md mb-4" />
-              <h2 className="text-lg font-bold mb-2">{item.title}</h2>
+              <h2 className="text-lg font-bold mb-2 text-center" key={item.title}>{item.title}</h2>
              
-              <button
-                onClick={() => addToCart(item)}
-                className="w-full bg-pink-100 text-black  font-semiboldpy-2 px-4 rounded-md hover:bg-blue-100"
+              <div className="w-full  bg-pink-100 text-black  font-semibold  hover:bg-blue-100 flex justify-around items-center m-0 p-2"
               >
-                Add to Cart ({getItemQuantity(item.id)})
-              </button>
+                <button className="flex items-center space-x-2" key={item.id}>
+                <span className='bg-pink-200 w-5 rounded-md' onClick={() => addToCart(item)}> + </span>Add to Cart({getItemQuantity(item.id)})<span className='bg-pink-200 w-5 rounded-md' onClick={() => removeFromCart(item)}> - </span>
+                </button>
+              </div>
             </div>
           ))}
         </div>

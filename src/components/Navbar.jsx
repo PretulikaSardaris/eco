@@ -110,7 +110,7 @@ const Navbar = () => {
           </Link>
           <Link to="/CartPage" className='flex items-center gap-2 hover:border-2 border-indigo-200'>
             <FaCartArrowDown size={30} />
-            <span>Cart</span>
+            <span>Cart-(no.)</span>
           </Link>
           <Link to='/' className='flex items-center gap-2 hover:border-2 border-indigo-200'>
             <MdOutlineContactSupport size={30} />
@@ -128,7 +128,7 @@ const Navbar = () => {
       {menu && (
         <>
           <div className='fixed inset-0 bg-black opacity-75 z-20' ></div>
-          <div className='absolute right-10 mr-3 top-1 w-1/2  bg-pink-50 p-10 rounded-b-3xl text-center z-30'>
+          <div className=' right-10 mr-3 top-1 w-1/2  bg-pink-50 p-10 rounded-b-3xl text-center z-30 fixed'>
             <ul className='space-y-10'>
               <li>
                 <Link to="/Login" className='flex items-center gap-2 justify-center hover:border-2 border-indigo-100' onClick={handleClick}>
@@ -139,7 +139,7 @@ const Navbar = () => {
               <li>
                 <Link to="/CartPage" className='flex items-center gap-2 justify-center hover:border-2 border-indigo-100' onClick={handleClick}>
                   <FaCartArrowDown size={30} />
-                  <span>Cart</span>
+                  <span>Cart-(no.)</span>
                 </Link>
               </li>
               <li>

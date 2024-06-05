@@ -39,13 +39,13 @@ export const ShopContextProvider = ({children}) => {
 
     
 
-    const removeFromCart = (itemId) => {
+    const removeFromCart = (item) => {
       setCart((prev) => {
         const newCart = { ...prev };
-        if (newCart[itemId].quantity > 1) {
-          newCart[itemId].quantity -= 1;
+        if (newCart[item.id].quantity > 1) {
+          newCart[item.id].quantity -= 1;
         } else {
-          delete newCart[itemId];
+          delete newCart[item.id];
         }
         return newCart;
       });
