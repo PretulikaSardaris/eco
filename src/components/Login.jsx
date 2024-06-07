@@ -1,15 +1,17 @@
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useState } from 'react';
+import {createUserWithEmailAndPassword } from 'firebase/auth';
+import React, {useContext ,  useState } from 'react';
 import { toast } from 'react-toastify';
 import {auth, db} from  '../Library/firebase'
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { ShopContext } from "../context/ShopContext";
+
+
 
 
 const Login = () => {
-
-  const navigate = useNavigate();
-
+  const { login } = useContext(ShopContext);
+   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
   const [register, setRegister] = useState(false)
 
@@ -18,12 +20,14 @@ const Login = () => {
         setLoading(true)
        
         const formData = new FormData(e.target)
-        const {email , password } = Object.fromEntries(formData)
+        const {username , email , password } = Object.fromEntries(formData)
+       
         try{
-            await signInWithEmailAndPassword(auth , email , password)
+            await login(username , email , password )
            
-            toast.success('Logging in')
-            navigate('/cart')
+            toast.success('Welcome Back ' + username)
+            
+            navigate('/CartPage')
         }catch(err){
             console.log(err)
             toast.error(err.message)
@@ -41,7 +45,7 @@ const Login = () => {
         const {username , email , password } = Object.fromEntries(formData)
         try{
             const res = await createUserWithEmailAndPassword(auth , email , password)
-            await setDoc(doc(db , 'users' , res.user.uid) , {
+            await setDoc(doc(db , 'username' , res.user.uid) , {
              username,
              email,
              id:res.user.uid,
@@ -69,7 +73,15 @@ toast.success('Account created login now')
         {/* Login */}
         <div className="flex-1 flex flex-col items-center gap-6">
           <h2 className="text-2xl font-bold text-gray-800">Welcome back</h2>
+
           <form className="flex flex-col items-center w-full gap-4" onSubmit={handleLogin}>
+          <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              placeholder="username"
+              name="username"
+              required
+            />
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
@@ -103,7 +115,7 @@ toast.success('Account created login now')
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
-              placeholder="Username"
+              placeholder="username"
               name="username"
               required
             />
