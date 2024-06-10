@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
-import { ShopContext } from '../context/ShopContext';
+import { ShopContext  } from '../context/ShopContext';
+import { Link } from 'react-router-dom';
+
 
 const CartPage = () => {
-  const { cart, removeFromCart, clearCart } = useContext(ShopContext);
+  const { cart, addToCart , getTotalItems ,   removeFromCart, clearCart } = useContext(ShopContext);
 
-  const getTotalItems = () => {
-    return Object.values(cart).reduce((total, item) => total + item.quantity, 0);
-  };
+  
 
   const getTotalPrice = () => {
     return Object.values(cart).reduce((total, item) => total + item.quantity * item.price, 0).toFixed(2);
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container m-4 p-4">
       <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
       {Object.keys(cart).length > 0 ? (
         <>
@@ -26,12 +26,12 @@ const CartPage = () => {
                   <p className="text-gray-600">Price: ${item.price}</p>
                   <p className="text-gray-600">Quantity: {item.quantity}</p>
                 </div>
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700"
-                >
-                  Remove
+                <div className="w-full  bg-pink-100 text-black  font-semibold  hover:bg-blue-100 flex justify-around items-center m-0 p-2"
+              >
+                <button className="flex items-center space-x-2" key={item.id}>
+                <span className='bg-pink-200 w-5 rounded-md' onClick={() => addToCart(item)}> + </span>Add to Cart({getItemQuantity(item.id)})<span className='bg-pink-200 w-5 rounded-md' onClick={() => removeFromCart(item)}> - </span>
                 </button>
+              </div>
               </div>
             ))}
           </div>
@@ -49,7 +49,13 @@ const CartPage = () => {
           </div>
         </>
       ) : (
-        <p className="text-gray-700">Your cart is empty.</p>
+        <div className='flex flex-col'>
+        <p className="text-gray-700 p-10 m-10">Your cart is empty.</p>
+       
+        <Link to='/ProductPage'>
+        <button className='bg-gray-50 text-center font-semibold'>Check Products</button>
+      </Link>
+        </div>
       )}
     </div>
   );

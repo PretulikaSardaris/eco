@@ -12,28 +12,29 @@ const Navbar = () => {
   const { user , username } = useContext(ShopContext);
   const [menu, setMenu] = useState(false);
 
+  
   const handleClick = () => {
     setMenu(!menu);
   }
 
   return (
     <>
-      <nav className='flex justify-between items-center bg-[#FFFFFF] p-4 fixed top-0 left-0 w-full z-30'>
-        <Link to='/' className='flex items-center gap-5 ml-10 hover:border-2 border-indigo-200'>
-          <img className='w-12' src="https://banner2.cleanpng.com/20180519/jjs/kisspng-e-commerce-logo-electronic-business-5b00d2d0918d84.2335269315267806245962.jpg" alt="Logo" />
-          <span className='block font-bold text-lg text-blue-700'>e-commerce</span>
+      <nav className='flex justify-between items-center bg-[#FFFFFF] p-1 fixed top-0 left-0 w-full z-30'>
+        <Link to='/' className='flex items-center ml-6 hover:border-2 border-indigo-200'>
+          <img className='w-20' src="https://cdn.dribbble.com/users/119277/screenshots/2383884/ecom-cart.gif" alt="Logo" />
+          <span className='block font-bold text-2xl uppercase text-purple-600 font-spirax'>Online Shop</span>
         </Link>
 
         <div id='nav-menu' className='hidden md:flex p-2 gap-5 mr-10'>
  
     {
    user ? (
-      <span className='flex items-center gap-2 hover:border-2 border-indigo-200'>
+      <span className='flex items-center gap-2 hover:border-2 border-indigo-200 font-spirax'>
         <FaRegUserCircle size={30} />
-        <span>`Hello ${username}`</span>
+        <span>Hello {username} </span>
       </span>
   ) : (
-    <Link to="/Login" className='flex items-center gap-2 hover:border-2 border-indigo-200'>
+    <Link to="/Login" className='flex items-center gap-2 hover:border-2 border-indigo-200 font-spirax'>
     <FaRegUserCircle size={30} />
     <span>Login</span>
   </Link>
@@ -41,11 +42,11 @@ const Navbar = () => {
  }
 
 
-          <Link to="/CartPage" className='flex items-center gap-2 hover:border-2 border-indigo-200'>
+          <Link to="/CartPage" className='flex items-center gap-2 font-spirax hover:border-2 border-indigo-200'>
             <FaCartArrowDown size={30} />
             <span>Cart-(no.)</span>
           </Link>
-          <Link to='/' className='flex items-center gap-2 hover:border-2 border-indigo-200'>
+          <Link to='/' className='flex items-center gap-2 hover:border-2 border-indigo-200 font-spirax'>
             <MdOutlineContactSupport size={30} />
             <span>Support</span>
           </Link>

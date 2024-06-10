@@ -1,6 +1,8 @@
 
+import { signInWithEmailAndPassword , onAuthStateChanged } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react'
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword , auth } from 'firebase/auth';
+import { auth } from '../Library/firebase';
+
 
 export const ShopContext = createContext()
 
@@ -12,21 +14,21 @@ export const ShopContextProvider = ({children}) => {
 
       
 
-    useEffect(() => {
-      const fetchProducts = async() => {
-        const res = await fetch('https://dummyjson.com/products');
-       
-        const data = await res.json()
-        
-        if(data && data.products){
-          setProducts(data.products)
-         
-        }
-       
-      };
-      fetchProducts();
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch('https://dummyjson.com/products');
 
-    }, [])
+      const data = await res.json()
+
+      if (data && data.products) {
+        setProducts(data.products)
+
+      }
+
+    };
+    fetchProducts();
+
+  }, [])
 
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -39,23 +41,17 @@ export const ShopContextProvider = ({children}) => {
 
     const login = async (username , email, password) => {
       try {
+        
         await signInWithEmailAndPassword(auth, email, password);
         setUser({email});
         setUsername(username);
+        console.log(username)
       } catch (err) {
         console.error(err);
       }
     };
   
-    const logOut = async () => {
-      try {
-        await signOut(auth);
-        setUser(null);
-        setUsername('')
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  
    
   
       const addToCart = (item) => {
@@ -90,8 +86,12 @@ export const ShopContextProvider = ({children}) => {
      setCart([])
     }
 
+    const getTotalItems = () => {
+      return Object.values(cart).reduce((total, item) => total + item.quantity, 0);
+    };
+
   return (
-    <ShopContext.Provider value={{products ,  cart , login , addToCart , removeFromCart , clearCart , user , username}}>
+    <ShopContext.Provider value={{products ,  cart , getTotalItems ,login , addToCart , removeFromCart , clearCart , user , username}}>
      {children}
     </ShopContext.Provider>
   )
