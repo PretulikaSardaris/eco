@@ -2,7 +2,7 @@
 import { signInWithEmailAndPassword , onAuthStateChanged } from 'firebase/auth';
 import React, { createContext, useEffect, useMemo, useState } from 'react'
 import { auth, db } from '../Library/firebase';
-import { getDoc } from 'firebase/firestore';
+import { getDoc, setDoc, doc } from 'firebase/firestore';
 
 
 export const ShopContext = createContext()
@@ -24,12 +24,10 @@ export const ShopContextProvider = ({children}) => {
       if (data && data.products) {
         setProducts(data.products)
 
-      }
-
-    };
+      }};
     fetchProducts();
+    }, [])
 
-  }, [])
 
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, async(currentUser) => {
@@ -37,9 +35,14 @@ export const ShopContextProvider = ({children}) => {
         const userDoc = await getDoc(doc(db, 'username' , currentUser.uid));
         setUsername(userDoc.data().username)
         setUser(currentUser);
+        const cartDoc = await getDoc(doc,(db,'usercart' , currentUser.uid));
+        if(cartDoc.exists()){
+          setCart(cartDoc.data().cart)
+        }
       } else{
         setUser(null);
-        setUsername('')
+        setUsername('');
+        setCart({})
       }
       });
       return () => unsubscribe();
@@ -67,6 +70,13 @@ export const ShopContextProvider = ({children}) => {
       setUsername(username)
     }
   
+
+    const updateCartInFirestore = async (newCart) => {
+      if (user) {
+        await setDoc(doc(db, 'usercart', user.uid), { cart: newCart });
+      }
+    };
+
    
   
       const addToCart = (item) => {
@@ -78,6 +88,7 @@ export const ShopContextProvider = ({children}) => {
           } else {
             newCart[item.id] = {...item , quantity: 1}
           }
+          updateCartInFirestore(newCart)
           return newCart
         }
         )
@@ -93,13 +104,17 @@ export const ShopContextProvider = ({children}) => {
         } else {
           newCart[item.id] = {...item , quantity: 0}
         }
+        updateCartInFirestore(newCart)
         return newCart;
       });
     }
 
     const clearCart = () => {
-     setCart([])
-    }
+     setCart({});
+     if(user){
+      updateCartInFirestore({})
+     } 
+     }
 
     const getTotalItems = useMemo(() => {
       return Object.values(cart).reduce((total, item) => total + item.quantity, 0);
