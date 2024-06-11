@@ -45,7 +45,7 @@ const ProductPage = () => {
               <div className="w-full text-black  font-semibold  hover:bg-purple-100 flex justify-around items-center m-0 p-2 rounded-lg gap-2"
               >
                 <button className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700 gap-5"  key={item.id}>
-                <span className=' w-5 rounded-md' onClick={() => addToCart(item)}> + </span>Add to Cart({getItemQuantity(item.id)})<span className=' w-5 rounded-md' onClick={() => removeFromCart(item)}> - </span>
+                <span className='w-5 rounded-md' onClick={() => addToCart(item)}> + </span>Add to Cart({getItemQuantity(item.id)})<span className=' w-5 rounded-md' onClick={() => removeFromCart(item)}> - </span>
                 </button>
               </div>
             </div>

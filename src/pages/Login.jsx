@@ -10,10 +10,10 @@ import { ShopContext } from "../context/ShopContext";
 
 
 const Login = () => {
-  const { login } = useContext(ShopContext);
+  const { login , register } = useContext(ShopContext);
    const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
-  const [register, setRegister] = useState(false)
+  const [registerMode, setRegisterMode] = useState(false)
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -39,7 +39,7 @@ const Login = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setRegister(true)
+        setRegisterMode(true)
        
         const formData = new FormData(e.target)
         const {username , email , password } = Object.fromEntries(formData)
@@ -72,25 +72,25 @@ toast.success('Account created login now')
 
         {/* Login */}
         <div className="flex-1 flex flex-col items-center gap-6">
-          <h2 className="text-2xl font-bold text-gray-800">Welcome back</h2>
+          <h2 className="text-2xl font-bold text-purple-800 font-serif">Welcome back</h2>
 
           <form className="flex flex-col items-center w-full gap-4" onSubmit={handleLogin}>
           <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-purple-800 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               placeholder="username"
               name="username"
               required
             />
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               placeholder="Email"
               name="email"
               required
             />
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline"
               type="password"
               placeholder="Password"
               name="password"
@@ -110,24 +110,24 @@ toast.success('Account created login now')
         <div className="h-full w-0.5 bg-slate-500 hidden md:block mx-10"></div>
         {/* Register */}
         <div className="flex-1 flex flex-col items-center gap-6">
-          <h2 className="text-2xl font-bold text-gray-800">Create an Account</h2>
+          <h2 className="text-2xl font-bold text-purple-800 font-serif">Create an Account</h2>
           <form className="flex flex-col items-center w-full gap-4" onSubmit={handleRegister}>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               placeholder="username"
               name="username"
               required
             />
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-purple-700 leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               placeholder="email"
               name="email"
               required
             />
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-purples-700 leading-tight focus:outline-none focus:shadow-outline"
               type="password"
               placeholder="Password"
               name="password"
