@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 const CartPage = () => {
-  const { cart, addToCart , getTotalItems ,   removeFromCart, clearCart } = useContext(ShopContext);
-
+  const { cart,  getTotalItems , clearCart } = useContext(ShopContext);
+  console.log(cart)
   
 
   const getTotalPrice = () => {
@@ -28,9 +28,7 @@ const CartPage = () => {
                 </div>
                 <div className="w-full  bg-pink-100 text-black  font-semibold  hover:bg-blue-100 flex justify-around items-center m-0 p-2"
               >
-                <button className="flex items-center space-x-2" key={item.id}>
-                <span className='bg-pink-200 w-5 rounded-md' onClick={() => addToCart(item)}> + </span>Add to Cart({getItemQuantity(item.id)})<span className='bg-pink-200 w-5 rounded-md' onClick={() => removeFromCart(item)}> - </span>
-                </button>
+               
               </div>
               </div>
             ))}
