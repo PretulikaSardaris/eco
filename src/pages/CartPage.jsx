@@ -45,7 +45,7 @@ const CartPage = () => {
               <button className='bg-pink-700 text-white py-2 px-4 rounded-lg hover:bg-pink-500' onClick={clearCart}>Clear Cart</button>
               <div className='text-lg font-semibold text-purple-800'>Total items: {getTotalItems}</div>
               <button className='bg-purple-700 text-white py-2 px-4 rounded-lg hover:bg-purple-900'
-               onClick={()=> setMsg(!msg)}> { msg ? 'Payment Done': 'Proceed to Checkout'}</button>
+               onClick={()=> setMsg(!msg)}> { msg ? 'You get 1 Million $ for instant Payement!!': 'Proceed to Checkout'}</button>
             </div>
           </>
         )}
