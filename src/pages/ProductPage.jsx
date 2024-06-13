@@ -19,7 +19,7 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto p-4 flex flex-row">
-      <div className='w-1/4 pr-4 '>
+      <div className='w-1/4 pr-4 mt-5 p-12 bg-purple-50 rounded-lg'>
         <div className="mb-4">
           <h2 className='font-bold'>Categories</h2>
           <ul >
@@ -34,11 +34,11 @@ const ProductPage = () => {
         </div>
 
       </div>
-<div className=' w-3/4'>
+<div className='w-3/4 '>
       {filteredProducts.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((item) => (
-            <div key={item.id} className="bg-white p-4 rounded-lg shadow-lg">
+            <div key={item.id} className="bg-purple-50 p-5 m-4 rounded-lg shadow-lg">
               <img src={item.thumbnail} className="w-full h-48 object-cover rounded-md mb-4" />
               <h2 className="text-lg font-bold mb-2 text-center" key={item.title}>{item.title}</h2>
              

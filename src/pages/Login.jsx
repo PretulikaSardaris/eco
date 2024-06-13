@@ -11,7 +11,9 @@ import { ShopContext } from "../context/ShopContext";
 
 const Login = () => {
   const { login , register } = useContext(ShopContext);
+
    const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false)
   const [registerMode, setRegisterMode] = useState(false)
 
@@ -60,7 +62,7 @@ toast.success('Account created login now')
             toast.error(err.message)
         }
         finally{
-        setRegister(false)
+        setRegisterMode(false)
 
         }
       };
@@ -139,7 +141,7 @@ toast.success('Account created login now')
               type="submit"
               disabled={register}
             >
-               {register ? 'loading ..' : 'Sign Up'}
+               {registerMode ? 'loading ..' : 'Sign Up'}
             </button>
           </form>
         </div>

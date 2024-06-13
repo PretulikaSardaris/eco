@@ -20,15 +20,15 @@ const ProductCards = () => {
   const productByCategory = groupProductsByCategory(products);
  
   return (
-    <div>
+    <div className='bg-purple-100'>
       {Object.entries(productByCategory).map(([category , items])=>(
 <div key={category}>
   <h1 className='flex flex-col uppercase font-bold items-center text-xl md:text-3xl p-5 m-3 text-purple-900 font-serif'>{category}</h1>
   <div className='flex flex-row'>
     {items.slice (0,4).map((item) => (
-      <div className=' hover:bg-pink-50 gap-5 p-1 m-1 rounded-2xl' > <Link to={`/category/${category}`}>
-        <img className='hover:bg-blue-100 gap-3 rounded-md object-cover border-2' src={item.thumbnail} alt={item.title} onClick={() => setSelectedCategory(category)}/></Link>
-        <h1 className='hidden  md:flex items-center font-semibold justify-center'>{item.title}</h1>
+      <div className=' hover:bg-pink-50 gap-5 p-1 m-1 rounded-full' > <Link to={`/category/${category}`}>
+        <img className='hover:bg-purple-100 gap-3 rounded-full object-cover border-2 ' src={item.thumbnail} alt={item.title} onClick={() => setSelectedCategory(category)}/></Link>
+        <h1 className='hidden  md:flex items-center font-semibold justify-center text-center'>{item.title}</h1>
       </div>
     )) }</div> </div>
       ))}

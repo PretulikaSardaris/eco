@@ -21,10 +21,10 @@ const CartPage = () => {
           <div className='flex'>
             <img src={product.thumbnail} alt={product.title} className='w-24 h-24 object-cover rounded-md shadow-md mr-4' />
             <div>
-              <h2 className='font-bold text-xl text-gray-800'>{product.title}</h2>
-              <p className='text-gray-600'>Price: ${item.price}</p>
-              <p className='text-gray-600'>Quantity: {item.quantity}</p>
-              <button className='text-red-700 hover:text-red-900 text-sm font-medium mt-2' onClick={() => removeFromCart(item)}>Remove</button>
+              <h2 className='font-bold text-xl text-indigo-900'>{product.title}</h2>
+              <p className='text-purple-600'>Price: ${item.price}</p>
+              <p className='text-purple-600'>Quantity: {item.quantity}</p>
+              <button className='text-pink-700 hover:text-pink-900 text-sm font-medium mt-2' onClick={() => removeFromCart(item)}>Remove</button>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ const CartPage = () => {
               <button className='bg-pink-700 text-white py-2 px-4 rounded-lg hover:bg-pink-500' onClick={clearCart}>Clear Cart</button>
               <div className='text-lg font-semibold text-purple-800'>Total items: {getTotalItems}</div>
               <button className='bg-purple-700 text-white py-2 px-4 rounded-lg hover:bg-purple-900'
-               onClick={()=> setMsg(!msg)}> { msg ? ' Trupti kasar - You get 1 Million $ for instant Payment!!': 'Proceed to Checkout'}</button>
+               onClick={()=> setMsg(!msg)}> { msg ? 'Trupti kasar - You get 1 Million $ for instant Payment!!': 'Proceed to Checkout'}</button>
             </div>
           </>
         )}
