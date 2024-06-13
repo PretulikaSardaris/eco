@@ -1,60 +1,55 @@
-import React, { useContext } from 'react';
-import { ShopContext  } from '../context/ShopContext';
-import { Link } from 'react-router-dom';
-
+import React, { useContext, useState } from 'react';
+import { ShopContext } from '../context/ShopContext';
 
 const CartPage = () => {
-  const { cart,  getTotalItems , clearCart } = useContext(ShopContext);
-  console.log(cart)
+  const { cart, products, removeFromCart, clearCart, getTotalItems } = useContext(ShopContext);
+
+  const[msg , setMsg] = useState(false)
   
 
-  const getTotalPrice = () => {
-    return Object.values(cart).reduce((total, item) => total + item.quantity * item.price, 0).toFixed(2);
+  const renderCartItems = () => {
+    return Object.keys(cart).map((key) => {
+      const item = cart[key];
+      const product = products.find(p => p.id === item.id);
+
+      if (item.quantity === 0) {
+        return null;
+      }
+
+      return (
+        <div key={item.id} className='flex items-center justify-between bg-white shadow-md rounded-lg p-4 mb-4'>
+          <div className='flex'>
+            <img src={product.thumbnail} alt={product.title} className='w-24 h-24 object-cover rounded-md shadow-md mr-4' />
+            <div>
+              <h2 className='font-bold text-xl text-gray-800'>{product.title}</h2>
+              <p className='text-gray-600'>Price: ${item.price}</p>
+              <p className='text-gray-600'>Quantity: {item.quantity}</p>
+              <button className='text-red-700 hover:text-red-900 text-sm font-medium mt-2' onClick={() => removeFromCart(item)}>Remove</button>
+            </div>
+          </div>
+        </div>
+      );
+    });
   };
 
   return (
-    <div className="container m-4 p-4">
-      <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
-      {Object.keys(cart).length > 0 ? (
-        <>
-          <div className="grid grid-cols-1 gap-6">
-            {Object.values(cart).map((item) => (
-              <div key={item.id} className="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
-                <img src={item.thumbnail} alt={item.title} className="w-20 h-20 object-cover rounded-md" />
-                <div className="ml-4 flex-1">
-                  <h3 className="text-lg font-bold">{item.title}</h3>
-                  <p className="text-gray-600">Price: ${item.price}</p>
-                  <p className="text-gray-600">Quantity: {item.quantity}</p>
-                </div>
-                <div className="w-full  bg-pink-100 text-black  font-semibold  hover:bg-blue-100 flex justify-around items-center m-0 p-2"
-              >
-               
-              </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold">Total Items: {getTotalItems()}</h3>
-              <h3 className="text-xl font-bold">Total Price: ${getTotalPrice()}</h3>
+    <div className='bg-purple-100 min-h-screen'>
+      <div className='max-w-4xl mx-auto p-8'>
+        <h1 className='text-3xl font-semibold text-purple-800 mb-8'>Shopping Cart</h1>
+        {cart.length === 0 ? (
+          <p className='text-lg text-gray-700'>Your cart is empty.</p>
+        ) : (
+          <>
+            {renderCartItems()}
+            <div className='flex justify-between items-center mt-8'>
+              <button className='bg-pink-700 text-white py-2 px-4 rounded-lg hover:bg-pink-500' onClick={clearCart}>Clear Cart</button>
+              <div className='text-lg font-semibold text-purple-800'>Total items: {getTotalItems}</div>
+              <button className='bg-purple-700 text-white py-2 px-4 rounded-lg hover:bg-purple-900'
+               onClick={()=> setMsg(!msg)}> { msg ? 'Payment Done': 'Proceed to Checkout'}</button>
             </div>
-            <button
-              onClick={clearCart}
-              className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700"
-            >
-              Clear Cart
-            </button>
-          </div>
-        </>
-      ) : (
-        <div className='flex flex-col'>
-        <p className="text-gray-700 p-10 m-10">Your cart is empty.</p>
-       
-        <Link to='/ProductPage'>
-        <button className='bg-gray-50 text-center font-semibold'>Check Products</button>
-      </Link>
-        </div>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

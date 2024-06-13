@@ -27,7 +27,7 @@ const Navbar = () => {
       <nav className='flex justify-between items-center bg-[#FFFFFF] p-1 fixed top-0 left-0 w-full z-30 '>
         <Link to='/' className='flex items-center ml-6 hover:border-2 border-indigo-200 gap-3'>
           <img className='w-8 h-8 rounded-full border-b-4 border-pink-900' src="https://cdn.dribbble.com/users/690545/screenshots/2100539/animacija-dribble.gif" alt="Logo" />
-          <span className='block font-bold text-2xl uppercase text-purple-600 font-spirax rounded-lg'>Purple Shop</span>
+          <span className='block font-bold text-2xl uppercase text-purple-900 font-spirax rounded-lg'><span  className='block font-bold text-2xl uppercase text-purple-600 font-spirax rounded-lg'>Purple</span> Shop</span>
         </Link>
 
         <div id='nav-menu' className='hidden md:flex p-2 gap-5 mr-10'>

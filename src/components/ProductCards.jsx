@@ -4,6 +4,7 @@ import { Link  } from "react-router-dom";
 
 const ProductCards = () => {
   const { products } = useContext(ShopContext);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const groupProductsByCategory = (products) => {
     return products.reduce((acc, product) => {
